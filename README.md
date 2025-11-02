@@ -1,170 +1,172 @@
 # Insurance Claims Automation
 
-An automated insurance claims processing platform leveraging blockchain technology and AI capabilities for damage assessment, fraud detection, and instant payout approval.
+An automated insurance claims processing platform leveraging AI-powered damage assessment, fraud detection algorithms, and instant payout approval mechanisms to streamline the claims lifecycle.
 
 ## Overview
 
-This platform revolutionizes the traditional insurance claims process by automating key decision-making steps, reducing processing time from weeks to minutes, and ensuring transparent, tamper-proof record-keeping on the blockchain.
+This platform revolutionizes traditional insurance claims processing by automating key stages including damage evaluation, fraud risk analysis, policy coverage verification, and payout calculation. The system reduces processing time from days to minutes while maintaining accuracy and compliance.
 
-## Features
+## Key Features
 
-### Core Functionality
-- **Automated Claims Processing**: Submit and process insurance claims without manual intervention
-- **AI-Powered Damage Assessment**: Intelligent evaluation of damage reports and supporting documentation
-- **Fraud Detection**: Advanced pattern recognition to identify suspicious claims
-- **Instant Payout Calculation**: Automated calculation based on policy terms and damage assessment
-- **Policy Coverage Verification**: Real-time validation of active coverage and claim eligibility
-- **Approval Automation**: Smart contract-based approval workflow with configurable thresholds
+### Automated Damage Assessment
+- AI-powered image analysis for vehicle and property damage
+- Severity scoring and repair cost estimation
+- Historical claims data comparison
+- Real-time damage classification
 
-### Benefits
-- **Speed**: Process claims in minutes instead of weeks
-- **Transparency**: All decisions and calculations recorded on blockchain
-- **Cost Efficiency**: Reduced administrative overhead and operational costs
-- **Accuracy**: Minimize human error in assessments and calculations
-- **Trust**: Immutable audit trail for all claim activities
-- **Accessibility**: 24/7 claim submission and processing
+### Fraud Detection
+- Pattern recognition across claim submissions
+- Anomaly detection in claim details
+- Cross-reference with known fraud indicators
+- Risk scoring for each claim
 
-## Smart Contracts
+### Instant Payout Approval
+- Automated eligibility verification
+- Dynamic payout calculation based on policy terms
+- Threshold-based approval workflows
+- Immediate fund release for low-risk claims
 
-### claims-processor
-The core smart contract responsible for managing the entire claims lifecycle:
-- Claim submission and registration
-- Damage assessment recording
-- Fraud risk evaluation
-- Payout calculation
-- Coverage verification
-- Approval/rejection workflow
-- Payment release management
+### Policy Coverage Verification
+- Real-time policy status checks
+- Coverage limit validation
+- Deductible calculation
+- Exclusion clause processing
 
-## Technical Architecture
+## Smart Contract Architecture
 
-### Blockchain Layer
-- Built on Stacks blockchain using Clarity smart contracts
-- Ensures immutability and transparency of all transactions
-- Enables trustless automation of claim processing
+The platform uses a Clarity smart contract (`claims-processor`) that manages:
+- Claim submission and lifecycle tracking
+- Fraud detection scoring
+- Payout calculation and approval
+- Policy coverage verification
+- Administrative controls
 
-### Data Structure
-Claims are stored with comprehensive metadata including:
-- Policyholder information
-- Claim details and timestamp
-- Damage assessment results
-- Fraud detection scores
-- Coverage verification status
-- Payout amounts
-- Processing status
+## Technology Stack
+
+- **Blockchain**: Stacks blockchain using Clarity smart contracts
+- **Language**: Clarity (for transparent, secure claim processing)
+- **Development**: Clarinet framework
 
 ## Getting Started
 
 ### Prerequisites
-- [Clarinet](https://github.com/hirosystems/clarinet) installed
+- Clarinet CLI installed
 - Node.js and npm
-- Basic understanding of Clarity and blockchain concepts
+- Stacks wallet for testing
 
 ### Installation
 
-1. Clone the repository:
 ```bash
-git clone https://github.com/alexdaniel6/Insurance-claims-automation.git
+# Clone the repository
+git clone <repository-url>
 cd Insurance-claims-automation
-```
 
-2. Install dependencies:
-```bash
+# Install dependencies
 npm install
-```
 
-3. Check contract syntax:
-```bash
+# Run tests
+clarinet test
+
+# Check contract syntax
 clarinet check
 ```
 
-4. Run tests:
+## Contract Functions
+
+### Public Functions
+- `submit-claim`: Submit a new insurance claim
+- `assess-damage`: Process damage assessment
+- `detect-fraud`: Run fraud detection algorithms
+- `approve-payout`: Approve and process payout
+- `reject-claim`: Reject a fraudulent or invalid claim
+
+### Read-Only Functions
+- `get-claim-details`: Retrieve claim information
+- `get-claim-status`: Check current claim status
+- `calculate-payout`: Preview payout amount
+- `check-fraud-score`: View fraud risk assessment
+
+### Administrative Functions
+- `update-fraud-threshold`: Adjust fraud detection sensitivity
+- `set-max-auto-approval`: Set automatic approval limits
+- `pause-processing`: Emergency pause mechanism
+
+## Claim Processing Workflow
+
+1. **Submission**: Claimant submits details and documentation
+2. **Verification**: System verifies policy coverage and eligibility
+3. **Assessment**: AI analyzes damage and estimates costs
+4. **Fraud Check**: Algorithm evaluates fraud risk
+5. **Approval**: Automatic approval for low-risk claims within threshold
+6. **Payout**: Instant fund transfer to verified claimant
+
+## Security Features
+
+- Immutable claim records on blockchain
+- Multi-signature requirements for high-value claims
+- Rate limiting to prevent spam
+- Encrypted sensitive data storage
+- Audit trail for all transactions
+
+## Use Cases
+
+- **Auto Insurance**: Vehicle collision and damage claims
+- **Home Insurance**: Property damage and natural disaster claims
+- **Health Insurance**: Medical expense reimbursement
+- **Travel Insurance**: Trip cancellation and lost luggage claims
+
+## Benefits
+
+- **Speed**: Claims processed in minutes instead of days
+- **Accuracy**: AI-powered assessment reduces human error
+- **Transparency**: Blockchain ensures immutable records
+- **Cost Efficiency**: Automation reduces operational overhead
+- **Customer Satisfaction**: Instant payouts improve experience
+
+## Testing
+
 ```bash
-clarinet test
-```
-
-## Usage
-
-### Submitting a Claim
-Policyholders can submit claims by providing:
-- Policy ID
-- Incident details
-- Damage documentation
-- Timestamp and location data
-
-### Processing Flow
-1. **Submission**: Claim is registered on-chain
-2. **Verification**: Policy coverage is validated
-3. **Assessment**: Damage is evaluated automatically
-4. **Fraud Check**: Risk analysis is performed
-5. **Calculation**: Payout amount is determined
-6. **Approval**: Claim is approved or flagged for review
-7. **Payout**: Funds are released to policyholder
-
-## Development
-
-### Project Structure
-```
-Insurance-claims-automation/
-├── contracts/
-│   └── claims-processor.clar
-├── tests/
-│   └── claims-processor.test.ts
-├── settings/
-│   ├── Devnet.toml
-│   ├── Testnet.toml
-│   └── Mainnet.toml
-├── Clarinet.toml
-└── package.json
-```
-
-### Running Tests
-```bash
+# Run all tests
 npm test
+
+# Run specific test file
+clarinet test tests/claims-processor_test.ts
+
+# Check contract validity
+clarinet check
 ```
 
-### Deployment
-Deploy to testnet:
+## Deployment
+
 ```bash
+# Deploy to testnet
 clarinet deploy --testnet
+
+# Deploy to mainnet
+clarinet deploy --mainnet
 ```
-
-## Security Considerations
-
-- All claim data is cryptographically secured
-- Access control implemented for administrative functions
-- Fraud detection thresholds configurable by administrators
-- Multi-signature requirements for high-value payouts
-- Regular security audits recommended
-
-## Roadmap
-
-- [ ] Integration with external damage assessment APIs
-- [ ] Machine learning model for improved fraud detection
-- [ ] Multi-currency payout support
-- [ ] Mobile app for claim submission
-- [ ] Integration with IoT devices for automated incident reporting
-- [ ] Decentralized dispute resolution mechanism
 
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
 
 ## License
 
-MIT License - see LICENSE file for details
+MIT License
 
 ## Support
 
-For questions or issues:
-- Open an issue on GitHub
-- Contact: support@insurancechain.io
-- Documentation: https://docs.insurancechain.io
+For issues and questions, please open an issue on the GitHub repository.
 
-## Acknowledgments
+## Roadmap
 
-Built with Clarity and Stacks blockchain technology for transparent, automated insurance claims processing.
+- [ ] Integration with major insurance providers
+- [ ] Mobile app for claim submission
+- [ ] Advanced ML models for fraud detection
+- [ ] Multi-language support
+- [ ] IoT device integration for real-time damage reporting
